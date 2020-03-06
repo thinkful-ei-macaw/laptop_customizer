@@ -1,29 +1,17 @@
 import React, { Component} from 'react'
-import USCurrencyFormat from '../CurrencyFormat'
+//import USCurrencyFormat from '../CurrencyFormat'
+import CartPart from './CartPart'
 
 class Cart extends Component{
 
   render(){
       
-    const summary = Object.keys(this.props.selected).map((feature, idx) => {
-        const featureHash = feature + '-' + idx;
-        const selectedOption = this.props.selected[feature];
+    
     
         //CartPart has one return from map
-        return (
-        <div className="summary__option" key={featureHash}>
-            <div className="summary__option__label">{feature} </div>
-            <div className="summary__option__value">{selectedOption.name}</div>
-            <div className="summary__option__cost">
-            {USCurrencyFormat.format(selectedOption.cost)}
-            </div>
-        </div>
-        );
-    });
-  
+        
     return(
-      summary
-
+      <CartPart selected={this.props.selected} />
     )
 
   }
