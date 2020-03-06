@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
-
-// Normalizes string as a slug - a string that is safe to use
-// in both URLs and html attributes
-
-
 import './App.css';
-
 import Header from './components/Header'
-import USCurrencyFormat from './CurrencyFormat'
 import Cart from './components/Cart'
 import PartsList from './components/PartsList'
+import Total from './components/Total'
 
 
 
@@ -47,13 +41,6 @@ class App extends Component {
   render() {
 
 
-    
-   //Total
-  const total = Object.keys(this.state.selected).reduce(
-    (acc, curr) => acc + this.state.selected[curr].cost,
-    0
-  );
-
     //Headers AND entire Cart
     return (
       <div className="App">
@@ -61,14 +48,8 @@ class App extends Component {
         <main>
           <PartsList features={this.props.features} selected={this.state.selected} handleUpdateFeature={this.updateFeature} />
           <section className="main__summary">
-            <h2>Your cart</h2>
             <Cart selected={this.state.selected} />
-            <div className="summary__total">
-              <div className="summary__total__label">Total</div>
-              <div className="summary__total__value">
-                {USCurrencyFormat.format(total)}
-              </div>
-            </div>
+            <Total selected={this.state.selected} />
           </section>
         </main>
       </div>

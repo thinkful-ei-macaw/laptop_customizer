@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import slugify from 'slugify';
-import USCurrencyFormat from '../CurrencyFormat'
 import Parts from './Parts'
 
 class PartsList extends Component {

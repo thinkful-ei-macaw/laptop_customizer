@@ -8,7 +8,8 @@ class CartPart extends Component{
     const summary = Object.keys(this.props.selected).map((feature, idx) => {
       const featureHash = feature + '-' + idx;
       const selectedOption = this.props.selected[feature];
-    
+      
+    //CartPart has one return from map
       return (
         <div className="summary__option" key={featureHash}>
             <div className="summary__option__label">{feature} </div>

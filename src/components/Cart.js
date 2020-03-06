@@ -5,15 +5,14 @@ import CartPart from './CartPart'
 class Cart extends Component{
 
   render(){
-      
-    
-    
-        //CartPart has one return from map
         
     return(
+      <div>
+    
+      <h2>Your cart</h2>
       <CartPart selected={this.props.selected} />
+      </div>
     )
-
   }
 }
 

@@ -8,11 +8,11 @@ class Parts extends Component{
   render() {
       const features = Object.keys(this.props.features).map((feature, idx) => {
         const featureHash = feature + '-' + idx;
-        const options = this.props.features[feature].map(item => {
+        const options = this.props.features[feature].map((item, idx2) => {
           const itemHash = slugify(JSON.stringify(item));
 
           return (
-            <Selection itemHash={itemHash} item={item} feature={feature} selected={this.props.selected} handleUpdateFeature={this.props.handleUpdateFeature} />
+            <Selection key={feature + '-' + idx + idx2} itemHash={itemHash} item={item} feature={feature} selected={this.props.selected} handleUpdateFeature={this.props.handleUpdateFeature} />
           );
         });
     
