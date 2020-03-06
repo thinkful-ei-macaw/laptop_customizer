@@ -12,9 +12,6 @@ import USCurrencyFormat from './CurrencyFormat'
 
 
 
-
-
-
 class App extends Component {
   state = {
     selected: {
@@ -46,7 +43,6 @@ class App extends Component {
     });
   };
 
-  //Parts List AND Selection
   render() {
 
 
@@ -77,7 +73,7 @@ class App extends Component {
       <div className="App">
        <Header />
         <main>
-          <PartsList />
+          <PartsList features={this.props.features} selected={this.state.selected} handleUpdateFeature={this.updateFeature} />
           <section className="main__summary">
             <h2>Your cart</h2>
             {summary}
