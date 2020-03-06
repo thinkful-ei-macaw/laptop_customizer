@@ -6,6 +6,10 @@ import slugify from 'slugify';
 
 import './App.css';
 
+import Header from './components/Header'
+// import Parts from './components/Parts'
+
+
 // This object will allow us to
 // easily convert numbers into US dollar values
 const USCurrencyFormat = new Intl.NumberFormat('en-US', {
@@ -35,6 +39,7 @@ class App extends Component {
     }
   };
 
+    //updates selected to parts list and cart
   updateFeature = (feature, newValue) => {
     const selected = Object.assign({}, this.state.selected);
     selected[feature] = newValue;
@@ -43,6 +48,7 @@ class App extends Component {
     });
   };
 
+  //Parts List AND Selection
   render() {
     const features = Object.keys(this.props.features).map((feature, idx) => {
       const featureHash = feature + '-' + idx;
@@ -65,6 +71,7 @@ class App extends Component {
         );
       });
 
+      //PartsList AND Parts
       return (
         <fieldset className="feature" key={featureHash}>
           <legend className="feature__name">
@@ -75,10 +82,12 @@ class App extends Component {
       );
     });
 
+    //Cart Part
     const summary = Object.keys(this.state.selected).map((feature, idx) => {
       const featureHash = feature + '-' + idx;
       const selectedOption = this.state.selected[feature];
 
+      //CartPart
       return (
         <div className="summary__option" key={featureHash}>
           <div className="summary__option__label">{feature} </div>
@@ -89,17 +98,16 @@ class App extends Component {
         </div>
       );
     });
-
+    //Total
     const total = Object.keys(this.state.selected).reduce(
       (acc, curr) => acc + this.state.selected[curr].cost,
       0
     );
 
+    //Headers AND entire Cart
     return (
       <div className="App">
-        <header>
-          <h1>ELF Computing | Laptops</h1>
-        </header>
+       <Header />
         <main>
           <form className="main__form">
             <h2>Customize your laptop</h2>
